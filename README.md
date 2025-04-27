@@ -40,17 +40,8 @@
 2. Navigate to the project directory.
 3. Run the server:
    ```bash
-   python app.py
+   python main.py
    ```
 4. Open `http://localhost:5000` in your browser.
 5. Upload eye images and start testing!
 
-## 📌 Future Improvements
-- Add real-time eye tracking
-- Expand dataset for higher accuracy
-- Deploy to cloud servers (AWS/GCP/Azure)
-- Mobile version for accessibility
-
-## ✨ Acknowledgements
-- Thanks to **RCOEM** and **Biospectronics** for guidance.
-- Inspired by the need for early, accessible eye disease detection.
