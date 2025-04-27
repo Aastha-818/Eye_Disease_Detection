@@ -1,13 +1,13 @@
 # 👁️ Eye Disease Detection System
 
-**Vision Care** is an AI-powered project designed to detect eye diseases like **Diabetic Retinopathy**, **Cataract**, and **Glaucoma** using deep learning and pupillometric analysis. The system aims for early detection to prevent irreversible vision loss and assist ophthalmologists with faster, more accurate diagnoses.
+**Vision Care** is an AI-based project designed to detect eye diseases like **Diabetic Retinopathy**, **Cataract**, and **Glaucoma** using deep learning and pupillometric analysis. This system enables early detection to help prevent irreversible vision loss and assists ophthalmologists with faster, more accurate diagnoses.
 
 ## 🚀 Features
 - Automated eye disease detection using CNN
-- Easy-to-use web interface (HTML, CSS, Bootstrap)
-- Upload retinal or pupil images directly
-- High model accuracy for reliable results
-- Detailed model architecture and metrics display
+- Web interface for image upload and testing
+- Detailed model performance display
+- High accuracy in disease classification
+- Organized and easy-to-use project structure
 
 ## 📊 Model Performance
 - **Training Accuracy**: 96%
@@ -18,30 +18,45 @@
 
 ## 📂 Project Structure
 ```
-├── index.html        # Main website interface
-├── model_info.html   # Model summary and details
-├── static/           # Images, CSS files
-├── templates/        # HTML templates (if Flask used)
-├── app.py            # Backend server (Flask, if applicable)
-├── README.md         # Project documentation
+├── static/                  # UI Images
+├── README.md                 # Project Documentation
+├── classification.html       # Classification result page
+├── index.html                # Main homepage
+├── main model file.ipynb      # Jupyter Notebook (Model Training)
+├── main.py                   # Flask App (Main Server)
+├── model_info.html           # Model Metrics and Summary
+├── script.js                 # JavaScript File
+├── styles.css                # Styling (CSS)
 ```
 
 ## ⚙️ Technologies Used
-- **Frontend**: HTML5, CSS3, Bootstrap 5
-- **Backend**: Python (Flask)
-- **AI/ML**: TensorFlow / Keras
-- **Design Tools**: Figma
+- **Frontend**: HTML5, CSS3, Bootstrap 5, JavaScript
+- **Backend**: Python (Flask Framework)
+- **Deep Learning**: TensorFlow / Keras
+- **Design Tool**: Figma
 
-## 🛠️ How to Run
+## 🛠️ How to Run the Project
 1. Clone the repository:
    ```bash
    git clone https://github.com/your-username/eye-disease-detection.git
    ```
-2. Navigate to the project directory.
-3. Run the server:
+2. Navigate to the project folder:
+   ```bash
+   cd eye-disease-detection
+   ```
+3. Install the required Python packages:
+   ```bash
+   pip install -r requirements.txt
+   ```
+   *(If no requirements.txt yet, you mainly need Flask, TensorFlow/Keras.)*
+
+4. Run the Flask server:
    ```bash
    python main.py
    ```
-4. Open `http://localhost:5000` in your browser.
-5. Upload eye images and start testing!
+5. Open your browser and go to:
+   ```
+   http://127.0.0.1:5000/
+   ```
+6. Start uploading eye images and detect diseases!
 
