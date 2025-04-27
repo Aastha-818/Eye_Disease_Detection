@@ -54,5 +54,3 @@
 ## ✨ Acknowledgements
 - Thanks to **RCOEM** and **Biospectronics** for guidance.
 - Inspired by the need for early, accessible eye disease detection.
-
----
