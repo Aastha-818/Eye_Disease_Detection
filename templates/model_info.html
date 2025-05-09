@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Information</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+            background-color: #f8f9fa;
+        }
+        .model-info-card {
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .card-header {
+            background-color: #F53E2D;
+            color: white;
+            border-radius: 10px 10px 0 0 !important;
+        }
+        .param-row:nth-child(even) {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+        .layer-card {
+            margin-bottom: 15px;
+            border-left: 4px solid #F53E2D;
+        }
+        .back-btn {
+            margin-bottom: 20px;
+        }
+        .model-summary {
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            white-space: pre-wrap;
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #dee2e6;
+        }
+        .metrics-card {
+            background-color: #e9ecef;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <a href="/" class="btn btn-outline-secondary back-btn">
+                    <i class="bi bi-arrow-left"></i> Back to Home
+                </a>
+                <h1 class="text-center mb-4">Model Information</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card model-info-card">
+                    <div class="card-header">
+                        <h3 class="card-title mb-0">Model Overview</h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr class="param-row">
+                                    <th>Model Type</th>
+                                    <td>Convolutional Neural Network (CNN)</td>
+                                </tr>
+                                <tr class="param-row">
+                                    <th>Input Shape</th>
+                                    <td>(224, 224, 3)</td>
+                                </tr>
+                                <tr class="param-row">
+                                    <th>Total Parameters</th>
+                                    <td>{{ model_info.total_params }}</td>
+                                </tr>
+                                <tr class="param-row">
+                                    <th>Trainable Parameters</th>
+                                    <td>{{ model_info.trainable_params }}</td>
+                                </tr>
+                                <tr class="param-row">
+                                    <th>Non-trainable Parameters</th>
+                                    <td>{{ model_info.non_trainable_params }}</td>
+                                </tr>
+                                <tr class="param-row">
+                                    <th>Optimizer</th>
+                                    <td>{{ model_info.optimizer }}</td>
+                                </tr>
+                                <tr class="param-row">
+                                    <th>Loss Function</th>
+                                    <td>{{ model_info.loss_function }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card model-info-card metrics-card">
+                    <div class="card-header">
+                        <h3 class="card-title mb-0">Performance Metrics</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row text-center">
+                            <div class="col-6">
+                                <div class="p-3">
+                                    <h4>96.0 %</h4>
+                                    <p class="mb-0">Training Accuracy</p>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="p-3">
+                                    <h4>92.0 %</h4>
+                                    <p class="mb-0">Validation Accuracy</p>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="p-3">
+                                    <h4>93.0 %</h4>
+                                    <p class="mb-0">Testing Accuracy</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card model-info-card">
+                    <div class="card-header">
+                        <h3 class="card-title mb-0">Classes</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group">
+                            {% for class_name in model_info.classes %}
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                {{ class_name }}
+                                <span class="badge bg-primary rounded-pill">{{ loop.index0 }}</span>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card model-info-card">
+                    <div class="card-header">
+                        <h3 class="card-title mb-0">Model Architecture</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="model-summary">{{ model_info.summary }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card model-info-card">
+                    <div class="card-header">
+                        <h3 class="card-title mb-0">Layer Details</h3>
+                    </div>
+                    <div class="card-body">
+                        {% for layer in model_info.layers %}
+                        <div class="card layer-card">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ layer.name }} ({{ layer.type }})</h5>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p><strong>Output Shape:</strong> {{ layer.output_shape }}</p>
+                                        <p><strong>Parameters:</strong> {{ layer.params }}</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        {% if layer.config %}
+                                        <p><strong>Configuration:</strong></p>
+                                        <ul>
+                                            {% for key, value in layer.config.items() %}
+                                            <li><strong>{{ key }}:</strong> {{ value }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

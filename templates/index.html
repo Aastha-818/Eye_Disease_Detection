@@ -1,0 +1,1473 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Vision Care - See the world with clear and clarity</title>
+        <link rel="stylesheet" href="./styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    </head>
+
+
+    <style>
+        /* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: #0B132A;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.hidden-img {
+    display: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+h1 {
+    font-size: 42px;
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: 32px;
+    line-height: 1.3;
+}
+
+p {
+    margin-bottom: 20px;
+    color: #4F5665;
+}
+
+section {
+    padding: 80px 0;
+}
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+/* Animated Elements */
+.animate-fade-in {
+    animation: fadeIn 1s ease forwards;
+}
+
+.animate-slide-left {
+    opacity: 0;
+    animation: slideInLeft 1s ease forwards;
+}
+
+.animate-slide-right {
+    opacity: 0;
+    animation: slideInRight 1s ease forwards;
+}
+
+.animate-slide-up {
+    opacity: 0;
+    animation: slideInUp 1s ease forwards;
+}
+
+.animate-delay-1 {
+    animation-delay: 0.2s;
+}
+
+.animate-delay-2 {
+    animation-delay: 0.4s;
+}
+
+.animate-delay-3 {
+    animation-delay: 0.6s;
+}
+
+.animate-delay-4 {
+    animation-delay: 0.8s;
+}
+
+/* Button Styles with Animation */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+}
+
+.btn:hover::after {
+    animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(20, 20);
+        opacity: 0;
+    }
+}
+
+.btn-primary {
+    background-color: #F53E2D;
+    color: white;
+    box-shadow: 0 6px 15px rgba(245, 62, 45, 0.2);
+    transform: translateY(0);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #e02e1d;
+    box-shadow: 0 10px 20px rgba(245, 62, 45, 0.3);
+    transform: translateY(-3px);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+    box-shadow: 0 6px 15px rgba(245, 62, 45, 0.2);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: #F53E2D;
+    border: 1px solid #F53E2D;
+    transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+    background-color: #F53E2D;
+    color: white;
+    box-shadow: 0 8px 15px rgba(245, 62, 45, 0.2);
+    transform: translateY(-3px);
+}
+
+.btn-outline:active {
+    transform: translateY(0);
+}
+
+.btn-outline-red {
+    background-color: transparent;
+    color: #F53E2D;
+    border: 1px solid #F53E2D;
+    padding: 8px 20px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-red:hover {
+    background-color: #F53E2D;
+    color: white;
+    box-shadow: 0 5px 10px rgba(245, 62, 45, 0.2);
+    transform: translateY(-2px);
+}
+
+.btn-outline-red:active {
+    transform: translateY(0);
+}
+
+/* Header Styles with Animation */
+header {
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    animation: fadeIn 0.5s ease;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.logo svg {
+    margin-right: 10px;
+    animation: pulse 2s infinite;
+}
+
+nav ul {
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 15px;
+    position: relative;
+}
+
+nav ul li a {
+    color: #4F5665;
+    transition: color 0.3s ease;
+    padding: 5px 0;
+}
+
+nav ul li a:hover {
+    color: #F53E2D;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #F53E2D;
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* Hero Section with Animation */
+.hero {
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: rgba(245, 62, 45, 0.05);
+    z-index: -1;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: -100px;
+    left: -100px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: rgba(245, 62, 45, 0.05);
+    z-index: -1;
+}
+
+.hero .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hero-content {
+    flex: 1;
+    padding-right: 40px;
+}
+
+.hero-content h1 {
+    animation: slideInLeft 1s ease;
+}
+
+.hero-content p {
+    animation: slideInLeft 1s ease 0.2s forwards;
+    opacity: 0;
+}
+
+.hero-content .btn {
+    animation: slideInLeft 1s ease 0.4s forwards;
+    opacity: 0;
+}
+
+.hero-image {
+    flex: 1;
+    text-align: right;
+    animation: slideInRight 1s ease;
+}
+
+.hero-image img {
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Stats Section with Animation */
+.stats {
+    padding: 40px 0;
+}
+
+.stats .container {
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    padding: 30px;
+    transform: translateY(0);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stats .container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    opacity: 0;
+}
+
+.stat-card:nth-child(1) {
+    animation: slideInUp 0.6s ease 0.2s forwards;
+}
+
+.stat-card:nth-child(2) {
+    animation: slideInUp 0.6s ease 0.4s forwards;
+}
+
+.stat-card:nth-child(3) {
+    animation: slideInUp 0.6s ease 0.6s forwards;
+}
+
+.stat-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    color: #F53E2D;
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover .stat-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.stat-icon.users {
+    background-color: #FFECEC;
+}
+
+.stat-icon.locations {
+    background-color: #FFF5EC;
+}
+
+.stat-icon.servers {
+    background-color: #FFECEC;
+}
+
+.stat-info h3 {
+    font-size: 24px;
+    margin-bottom: 5px;
+    position: relative;
+    display: inline-block;
+}
+
+.stat-info h3::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #F53E2D;
+    transition: width 0.3s ease;
+}
+
+.stat-card:hover .stat-info h3::after {
+    width: 100%;
+}
+
+.stat-info p {
+    margin-bottom: 0;
+    color: #4F5665;
+}
+
+/* Features Section with Animation */
+.features .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.features-image {
+    flex: 1;
+    opacity: 0;
+    animation: slideInLeft 1s ease forwards;
+}
+
+.features-image img {
+    animation: float 6s ease-in-out infinite;
+}
+
+.features-content {
+    flex: 1;
+    padding-left: 40px;
+}
+
+.features-content h2 {
+    opacity: 0;
+    animation: slideInRight 1s ease forwards;
+}
+
+.features-content p {
+    opacity: 0;
+    animation: slideInRight 1s ease 0.2s forwards;
+}
+
+.feature-list {
+    margin-top: 20px;
+}
+
+.feature-list li {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.feature-list li:nth-child(1) {
+    animation: slideInRight 0.5s ease 0.4s forwards;
+}
+
+.feature-list li:nth-child(2) {
+    animation: slideInRight 0.5s ease 0.6s forwards;
+}
+
+.feature-list li:nth-child(3) {
+    animation: slideInRight 0.5s ease 0.8s forwards;
+}
+
+.feature-list li:nth-child(4) {
+    animation: slideInRight 0.5s ease 1s forwards;
+}
+
+.check-icon {
+    color: #2FAB73;
+    margin-right: 10px;
+    transition: transform 0.3s ease;
+}
+
+.feature-list li:hover .check-icon {
+    transform: scale(1.2);
+}
+
+/* Eye Test Section with Animation */
+.eye-test {
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.eye-test::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -100px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: rgba(245, 62, 45, 0.05);
+    z-index: -1;
+}
+
+.eye-test h2, .eye-test p {
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+}
+
+.test-container {
+    margin-top: 40px;
+    border: 1px solid #F53E2D;
+    border-radius: 10px;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    opacity: 0;
+    animation: fadeIn 1.5s ease 1s forwards, pulse 5s infinite 1.3s;
+    box-shadow: 0 10px 30px rgba(245, 62, 45, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.test-container:hover {
+    box-shadow: 0 15px 40px rgba(245, 62, 45, 0.15);
+}
+
+.test-image {
+    flex: 1;
+    padding-right: 30px;
+    animation: float 6s ease-in-out infinite;
+}
+
+.test-form {
+    flex: 1;
+    text-align: left;
+}
+
+.upload-area {
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.upload-area:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.upload-area img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+.upload-area:hover img {
+    transform: scale(1.1);
+}
+
+.file-input {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+
+#file-chosen {
+    margin-left: 10px;
+    color: #4F5665;
+}
+
+.form-actions {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.start-action {
+    text-align: right;
+}
+
+/* Testimonials Section with Animation */
+.testimonials {
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.testimonials::after {
+    content: '';
+    position: absolute;
+    bottom: -100px;
+    right: -100px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: rgba(245, 62, 45, 0.05);
+    z-index: -1;
+}
+
+.testimonials h2, .testimonials > p {
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+}
+
+.testimonial-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    overflow-x: auto;
+    padding-bottom: 20px;
+    scrollbar-width: none; /* Firefox */
+}
+
+.testimonial-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+}
+
+.testimonial-card {
+    flex: 0 0 calc(33.333% - 20px);
+    border: 1px solid #F53E2D;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 0 10px;
+    text-align: left;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(245, 62, 45, 0.1);
+}
+
+.testimonial-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 15px;
+    transition: transform 0.3s ease;
+}
+
+.testimonial-card:hover .user-avatar {
+    transform: scale(1.1);
+}
+
+.user-details h4 {
+    margin-bottom: 5px;
+}
+
+.user-details p {
+    margin-bottom: 0;
+    font-size: 14px;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+}
+
+.rating span {
+    margin-right: 5px;
+}
+
+.rating i {
+    color: #FEA250;
+    transition: transform 0.3s ease;
+}
+
+.testimonial-card:hover .rating i {
+    transform: rotate(360deg);
+    transition: transform 0.5s ease;
+}
+
+.slider-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+    opacity: 0;
+    animation: fadeIn 1s ease 0.6s forwards;
+}
+
+.slider-dots {
+    display: flex;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #DDE0E4;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot:hover {
+    background-color: #F53E2D;
+}
+
+.dot.active {
+    width: 30px;
+    border-radius: 5px;
+    background-color: #F53E2D;
+}
+
+.slider-arrows {
+    display: flex;
+}
+
+.arrow-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+    cursor: pointer;
+    border: 1px solid #F53E2D;
+    background-color: transparent;
+    color: #F53E2D;
+    transition: all 0.3s ease;
+}
+
+.arrow-btn.next {
+    background-color: #F53E2D;
+    color: white;
+}
+
+.arrow-btn:hover {
+    background-color: #F53E2D;
+    color: white;
+    transform: translateX(3px);
+}
+
+.arrow-btn.prev:hover {
+    transform: translateX(-3px);
+}
+
+/* Subscribe Section with Animation */
+.subscribe-box {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards, pulse 3s infinite 1s;
+    position: relative;
+    overflow: hidden;
+}
+
+.subscribe-box::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: rotate(30deg);
+    animation: shimmer 3s infinite;
+    pointer-events: none;
+}
+
+.subscribe-content {
+    flex: 2;
+}
+
+.subscribe-content h2 {
+    margin-bottom: 10px;
+}
+
+.subscribe-content p {
+    margin-bottom: 0;
+}
+
+.subscribe-action {
+    flex: 1;
+    text-align: right;
+}
+
+/* Footer with Animation */
+footer {
+    background-color: #F8F8F8;
+    padding: 80px 0 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(to right, #F53E2D, #FEA250, #F53E2D);
+}
+
+.footer-columns {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-column {
+    flex: 1;
+    margin-bottom: 30px;
+    min-width: 200px;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+}
+
+.footer-column:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.footer-column:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.footer-column:nth-child(3) {
+    animation-delay: 0.5s;
+}
+
+.footer-column:nth-child(4) {
+    animation-delay: 0.7s;
+}
+
+.footer-column.company-info {
+    flex: 1.5;
+}
+
+.footer-column h4 {
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+}
+
+.footer-column h4::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 30px;
+    height: 2px;
+    background-color: #F53E2D;
+    transition: width 0.3s ease;
+}
+
+.footer-column:hover h4::after {
+    width: 100%;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+    transform: translateX(0);
+    transition: transform 0.3s ease;
+}
+
+.footer-column ul li:hover {
+    transform: translateX(5px);
+}
+
+.footer-column ul li a {
+    color: #4F5665;
+    transition: color 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+    color: #F53E2D;
+}
+
+.social-icons {
+    display: flex;
+    margin: 20px 0;
+}
+
+.social-icons a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    color: #F53E2D;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    transform: translateY(0);
+}
+
+.social-icons a:hover {
+    background-color: #F53E2D;
+    color: white;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(245, 62, 45, 0.2);
+}
+
+.copyright {
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    h1 {
+        font-size: 36px;
+    }
+    
+    h2 {
+        font-size: 28px;
+    }
+    
+    .hero .container,
+    .features .container {
+        flex-direction: column;
+    }
+    
+    .hero-content,
+    .features-content {
+        padding-right: 0;
+        padding-left: 0;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+    
+    .feature-list {
+        display: inline-block;
+        text-align: left;
+    }
+    
+    .test-container {
+        flex-direction: column;
+    }
+    
+    .test-image {
+        padding-right: 0;
+        margin-bottom: 30px;
+    }
+    
+    .testimonial-card {
+        flex: 0 0 calc(100% - 20px);
+        margin-bottom: 20px;
+    }
+    
+    .subscribe-box {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .subscribe-content {
+        margin-bottom: 20px;
+    }
+    
+    .subscribe-action {
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+    }
+    
+    .logo {
+        margin-bottom: 15px;
+    }
+    
+    nav {
+        margin: 15px 0;
+    }
+    
+    .stats .container {
+        flex-direction: column;
+    }
+    
+    .stat-card {
+        margin-bottom: 20px;
+        justify-content: center;
+    }
+    
+    .footer-column {
+        flex: 0 0 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    nav ul li {
+        margin: 5px 0;
+    }
+}
+
+/* Animation Classes for Scroll Animations */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: all 0.8s ease;
+}
+
+.reveal-left.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: all 0.8s ease;
+}
+
+.reveal-right.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+
+    </style>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 4.5C7 4.5 2.73 7.61 1 12C2.73 16.39 7 19.5 12 19.5C17 19.5 21.27 16.39 23 12C21.27 7.61 17 4.5 12 4.5ZM12 17C9.24 17 7 14.76 7 12C7 9.24 9.24 7 12 7C14.76 7 17 9.24 17 12C17 14.76 14.76 17 12 17ZM12 9C10.34 9 9 10.34 9 12C9 13.66 10.34 15 12 15C13.66 15 15 13.66 15 12C15 10.34 13.66 9 12 9Z" fill="#F44336"/>
+                </svg>
+                <span>Vision care</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/model-info">Model</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#test">Test</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="classification.html">Result</a></li>
+                </ul>
+            </nav>
+            <button class="btn btn-outline">Start</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>See the world with clear and clarity</h1>
+                <p>Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry.</p>
+                <button class="btn btn-primary">Get Started</button>
+            </div>
+            <div class="hero-image">
+                <img src="../static/hero image.png" alt="Eye doctor examining a patient" class="hidden-img">
+                <img src="../static/hero image.png" alt="Eye doctor examining a patient">
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stat-card">
+                <div class="stat-icon users">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>90+</h3>
+                    <p>Users</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon locations">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>30+</h3>
+                    <p>Locations</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon servers">
+                    <i class="fas fa-server"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>4+</h3>
+                    <p>Servers</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="about">
+        <div class="container">
+            <div class="features-image">
+                <img src="./static/about.png" alt="Person with laptop">
+            </div>
+            <div class="features-content">
+                <h2>We Provide Many Features You Can Use</h2>
+                <p>Lorem ipsum is simply dummy text of the printing and typesetting industry.</p>
+                <ul class="feature-list">
+                    <li>
+                        <span class="check-icon"><i class="fas fa-check-circle"></i></span>
+                        Powerful online protection.
+                    </li>
+                    <li>
+                        <span class="check-icon"><i class="fas fa-check-circle"></i></span>
+                        Internet without borders.
+                    </li>
+                    <li>
+                        <span class="check-icon"><i class="fas fa-check-circle"></i></span>
+                        Supercharged VPN.
+                    </li>
+                    <li>
+                        <span class="check-icon"><i class="fas fa-check-circle"></i></span>
+                        No specific time limits.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Eye Test Section -->
+    <section class="eye-test" id="test">
+        <div class="container">
+            <h2>Let's test your eye</h2>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+            
+            <div class="test-container">
+                <div class="test-image">
+                    <img src="./static/test.png" alt="Eye test illustration">
+                </div>
+                <div class="test-form">
+                    <form action="{{ url_for('upload_file') }}" method="POST" enctype="multipart/form-data">
+                        <div class="upload-area">
+                            <!-- <img src="static/test.png" alt="Upload icon" id="preview-image"> -->
+                            <p>Please upload square image, size less than 10MB</p>
+                            <div class="file-input">
+                                <input type="file" name="file" id="file-upload" accept=".jpg,.jpeg,.png" required>
+                                <button type="button" class="btn btn-outline-red" id="choose-file-btn" onclick="document.getElementById('file-upload').click()">Choose File</button>
+                                <span id="file-chosen">No File Chosen</span>
+                            </div>
+                        </div>
+                        <div class="start-action">
+                            <button type="submit" class="btn btn-primary" style="width: 489px;">Start</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2>Trusted by Thousands of Happy Customer</h2>
+            <p>These are the stories of our customers who have joined us with great pleasure when using this crazy feature.</p>
+            
+            <div class="testimonial-slider">
+                <div class="testimonial-container">
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="user-info">
+                                <div class="user-avatar">
+                                    <img src="/placeholder.svg?height=50&width=50" alt="Viezh Robert">
+                                </div>
+                                <div class="user-details">
+                                    <h4>Viezh Robert</h4>
+                                    <p>Warsaw, Poland</p>
+                                </div>
+                            </div>
+                            <div class="rating">
+                                <span>4.5</span>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="testimonial-content">
+                            <p>"Wow... I am very happy to use this VPN, it turned out to be more than my expectations and so far there have been no problems. LaslesVPN always the best".</p>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="user-info">
+                                <div class="user-avatar">
+                                    <img src="/placeholder.svg?height=50&width=50" alt="Yessica Christy">
+                                </div>
+                                <div class="user-details">
+                                    <h4>Yessica Christy</h4>
+                                    <p>Shanxi, China</p>
+                                </div>
+                            </div>
+                            <div class="rating">
+                                <span>4.5</span>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="testimonial-content">
+                            <p>"I like it because I like to travel far and still can connect with high speed."</p>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="user-info">
+                                <div class="user-avatar">
+                                    <img src="/placeholder.svg?height=50&width=50" alt="Kim Young Jou">
+                                </div>
+                                <div class="user-details">
+                                    <h4>Kim Young Jou</h4>
+                                    <p>Seoul, South Korea</p>
+                                </div>
+                            </div>
+                            <div class="rating">
+                                <span>4.5</span>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="testimonial-content">
+                            <p>"This is very unusual for my business that currently requires a virtual private network that has high security."</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="slider-controls">
+                    <div class="slider-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                    <div class="slider-arrows">
+                        <button class="arrow-btn prev"><i class="fas fa-arrow-left"></i></button>
+                        <button class="arrow-btn next"><i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subscribe Section -->
+    <section class="subscribe">
+        <div class="container">
+            <div class="subscribe-box">
+                <div class="subscribe-content">
+                    <h2>Subscribe Now for Get Special Features!</h2>
+                    <p>Let's subscribe with us and find the fun.</p>
+                </div>
+                <div class="subscribe-action">
+                    <button class="btn btn-primary">Subscribe Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-column company-info">
+                    <div class="logo">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 4.5C7 4.5 2.73 7.61 1 12C2.73 16.39 7 19.5 12 19.5C17 19.5 21.27 16.39 23 12C21.27 7.61 17 4.5 12 4.5ZM12 17C9.24 17 7 14.76 7 12C7 9.24 9.24 7 12 7C14.76 7 17 9.24 17 12C17 14.76 14.76 17 12 17ZM12 9C10.34 9 9 10.34 9 12C9 13.66 10.34 15 12 15C13.66 15 15 13.66 15 12C15 10.34 13.66 9 12 9Z" fill="#F44336"/>
+                        </svg>
+                        <span>Vision care</span>
+                    </div>
+                    <p>Lorem ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <p class="copyright">©2023 LaslesVPN</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#">Download</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">Locations</a></li>
+                        <li><a href="#">Server</a></li>
+                        <li><a href="#">Countries</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Engage</h4>
+                    <ul>
+                        <li><a href="#">LaslesVPN ?</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Tutorials</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Earn Money</h4>
+                    <ul>
+                        <li><a href="#">Affiliate</a></li>
+                        <li><a href="#">Become Partner</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Add this script to show selected filename
+        const fileInput = document.getElementById('file-upload');
+        const fileChosen = document.getElementById('file-chosen');
+
+        fileInput.addEventListener('change', function(){
+            if(this.files && this.files.length > 0){
+                fileChosen.textContent = this.files[0].name;
+            } else {
+                fileChosen.textContent = 'No File Chosen';
+            }
+        });
+    </script>
+</body>
+</html>
